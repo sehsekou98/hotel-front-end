@@ -9,7 +9,7 @@ export const api = axios.create({
 // Fetch room types from the API
 export async function getRoomTypes() {
     try {
-        const response = await api.get("/rooms/room-types");
+        const response = await api.get("/rooms/room/room-types");
         return response.data;
     } catch (error) {
         throw new Error('Error fetching Room Types');
@@ -29,5 +29,14 @@ export async function addRoom(photo, roomType, roomPrice) {
     } catch (error) {
         console.error('Error adding new room:', error);
         return false;
+    }
+}
+//get all rooms
+export async function getAllRooms() {
+    try {
+        const result = await api.get("/rooms/all-rooms")
+        return result.data
+    }catch(error){
+  throw new Error("Error getting rooms.")
     }
 }
