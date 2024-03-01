@@ -1,9 +1,9 @@
 // RoomTypeSelector.jsx
 
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { getRoomTypes } from '../utilis/ApiFunctions';
 
-// eslint-disable-next-line react/prop-types
 const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
     const [roomTypes, setRoomTypes] = useState([]);
     const [showNewRoomTypeInput, setShowNewRoomTypeInput] = useState(false);
@@ -15,11 +15,12 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
                 const data = await getRoomTypes();
                 setRoomTypes(data);
             } catch (error) {
-                console.error('Error fetching room types:', error);
+                console.error('Error fetching room types:', error.message)
             }
         }
         fetchRoomTypes();
     }, []);
+    
 
     const handleNewRoomTypeInputChange = (e) => {
         setNewRoomType(e.target.value);
@@ -40,7 +41,6 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
                     <select
                         id='roomType'
                         name='roomType'
-                        // eslint-disable-next-line react/prop-types
                         value={newRoom.roomType}
                         onChange={(e) => {
                             if (e.target.value === "Add New") {
@@ -57,23 +57,31 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
                     </select>
 
                     {showNewRoomTypeInput && (
-                        <div className='input-group'>
-                            <input
-                                className='form-control'
-                                type='text'
-                                placeholder='Enter a new room type'
-                                value={newRoomType}
-                                onChange={handleNewRoomTypeInputChange}
-                            />
-                            <button className='btn btn-hotel' type='button' onClick={handleAddNewRoomType}>
-                                Add
-                            </button>
-                        </div>
-                    )}
+    <div className='input-group'>
+        <input
+            className='form-control'
+            type='text'
+            placeholder='Enter a new room type'
+            value={newRoomType}
+            onChange={handleNewRoomTypeInputChange}
+        />
+        <button className='btn btn-hotel' type='button' onClick={handleAddNewRoomType}>
+            Add
+        </button>
+    </div>
+)}
+
                 </div>
             )}
         </>
     );
+};
+
+RoomTypeSelector.propTypes = {
+    handleRoomInputChange: PropTypes.func.isRequired,
+    newRoom: PropTypes.shape({
+        roomType: PropTypes.string.isRequired
+    }).isRequired
 };
 
 export default RoomTypeSelector;

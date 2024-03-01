@@ -41,23 +41,39 @@ const AddRoom = () => {
       setImagePreview('');
       setErrorMessage('');
     } catch (error) {
-      setErrorMessage(error.message);
+      setErrorMessage("Error adding new room");
     }
+    setTimeout(() => {
+      setSuccessMessage('');
+      setErrorMessage('');
+    }, 3000);
+    
   };
 
   return (
     <>
-      <section className='container mt-5'>
+      <section className='container mt-5 mb-5'>
         <div className='row justify-content-center'>
           <div className='col-md-8 col-lg-6'>
             <h2 className='mt-5 mb-2'>Add a New Room</h2>
+            
+            {successMessage && (
+              <div className='alert alert-success fade show'>{successMessage}</div>
+            )}
+
+              {errorMessage && (
+              <div className='alert alert-danger fade show'>{errorMessage}</div>
+            )}
+
+
             <form onSubmit={handleSubmit}>
               <div className='mb-3'>
                 <label htmlFor='roomType' className='form-label'>
                   Room Type
                 </label>
                 <div>
-                  <RoomTypeSelector handleRoomInputChange={handleRoomInputChange}
+                  <RoomTypeSelector
+                   handleRoomInputChange={handleRoomInputChange}
                   newRoom={newRoom}/>
                 </div>
                 <input
