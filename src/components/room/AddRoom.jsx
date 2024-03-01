@@ -1,5 +1,7 @@
-import { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
+import react, { useState } from 'react';
 import { addRoom } from '../utilis/ApiFunctions';
+import RoomTypeSelector from '../common/RoomTypeSelector';
 
 const AddRoom = () => {
   const [newRoom, setNewRoom] = useState({
@@ -54,6 +56,10 @@ const AddRoom = () => {
                 <label htmlFor='roomType' className='form-label'>
                   Room Type
                 </label>
+                <div>
+                  <RoomTypeSelector handleRoomInputChange={handleRoomInputChange}
+                  newRoom={newRoom}/>
+                </div>
                 <input
                   className='form-control'
                   id='roomType'

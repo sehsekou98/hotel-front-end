@@ -1,27 +1,37 @@
-import { useEffect, useState } from 'react'
-import { getRoomTypes } from '../utilis/ApiFunctions'
+// RoomTypeSelector.jsx
+
+import  { useEffect, useState } from 'react';
+import { getRoomTypes } from '../utilis/ApiFunctions';
 
 // eslint-disable-next-line react/prop-types
 const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
-    const [roomTypes, setRoomTypes] = useState([""])
-    const [showNewRoomTypeInput, setShowNewRoomTypeInput] = useState(false)
-    const [newRoomType, setNewRoomType] = useState("")
+    const [roomTypes, setRoomTypes] = useState([]);
+    const [showNewRoomTypeInput, setShowNewRoomTypeInput] = useState(false);
+    const [newRoomType, setNewRoomType] = useState("");
 
     useEffect(() => {
-        getRoomTypes().then((data) => { setRoomTypes(data) })
-    }, [])
+        async function fetchRoomTypes() {
+            try {
+                const data = await getRoomTypes();
+                setRoomTypes(data);
+            } catch (error) {
+                console.error('Error fetching room types:', error);
+            }
+        }
+        fetchRoomTypes();
+    }, []);
 
     const handleNewRoomTypeInputChange = (e) => {
-        setNewRoomType(e.target.value)
-    }
+        setNewRoomType(e.target.value);
+    };
 
     const handleAddNewRoomType = () => {
-        if (newRoomType !== "") {
-            setRoomTypes([...roomTypes, newRoomType])
-            setNewRoomType("")
-            setShowNewRoomTypeInput(false)
+        if (newRoomType.trim() !== "") {
+            setRoomTypes([...roomTypes, newRoomType.trim()]);
+            setNewRoomType("");
+            setShowNewRoomTypeInput(false);
         }
-    }
+    };
 
     return (
         <>
@@ -34,12 +44,12 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
                         value={newRoom.roomType}
                         onChange={(e) => {
                             if (e.target.value === "Add New") {
-                                setShowNewRoomTypeInput(true)
+                                setShowNewRoomTypeInput(true);
                             } else {
-                                handleRoomInputChange(e)
+                                handleRoomInputChange(e);
                             }
                         }}>
-                        <option value={""}>select a room type</option>
+                        <option value={""}>Select a room type</option>
                         <option value={"Add New"}>Add New</option>
                         {roomTypes.map((type, index) => (
                             <option key={index} value={type}>{type}</option>
@@ -55,8 +65,7 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
                                 value={newRoomType}
                                 onChange={handleNewRoomTypeInputChange}
                             />
-                            <button className='btn btn-hotel' type='button'
-                                onClick={handleAddNewRoomType}>
+                            <button className='btn btn-hotel' type='button' onClick={handleAddNewRoomType}>
                                 Add
                             </button>
                         </div>
@@ -64,7 +73,7 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
                 </div>
             )}
         </>
-    )
-}
+    );
+};
 
-export default RoomTypeSelector
+export default RoomTypeSelector;
