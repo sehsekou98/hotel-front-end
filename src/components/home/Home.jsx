@@ -3,7 +3,7 @@
 const Home = () => {
   return (
     <div>
-        <h2>Welcome To The People's Hotel</h2>
+        <h2>Welcome To LISAM's Hotel</h2>
     </div>
   )
 }
