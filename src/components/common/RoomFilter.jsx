@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import  { useState } from 'react';
-import PropTypes from 'prop-types';
 
 const RoomFilter = ({ data, setFilteredData }) => {
     const [filter, setFilter] = useState("");
@@ -7,7 +7,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
     const handleSelectChange = (e) => {
         const selectedRoomType = e.target.value;
         setFilter(selectedRoomType);
-        const filteredRooms = data.filter((room) => 
+        const filteredRooms = data.filtere((room) => 
             room.roomType.toLowerCase().includes(selectedRoomType.toLowerCase())
         );
         setFilteredData(filteredRooms);
@@ -33,14 +33,11 @@ const RoomFilter = ({ data, setFilteredData }) => {
                     </option>
                 ))}
             </select>
-            <button className='btn btn-hotal' type='button' onClick={clearFilter}>Clear Filter</button>
+            <button className='btn btn-hotel' type='button' onClick={clearFilter}>Clear Filter</button>
         </div>
     );
 };
 
-RoomFilter.propTypes = {
-    data: PropTypes.array.isRequired,
-    setFilteredData: PropTypes.func.isRequired
-};
+
 
 export default RoomFilter;

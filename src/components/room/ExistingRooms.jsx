@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Col from 'react-bootstrap';
-import RoomFilter from '././RoomFilter';
-import RoomPaginator from './RoomPaginator';
+import { Col } from 'react-bootstrap';
+import RoomFilter from '../common/RoomFilter';
+import RoomPaginator from '../common/RoomPaginator';
 import PropTypes from 'prop-types'; // Import PropTypes
 import { getAllRooms } from '../utilis/ApiFunctions';
 
@@ -34,7 +34,7 @@ const ExistingRooms = () => {
         if (selectedRoomType === "") {
             setFilteredRooms(rooms);
         } else {
-            const filtered = rooms.filter((room) => room.roomType === selectedRoomType);
+            const filtered = rooms.filtere((room) => room.roomType === selectedRoomType);
         }
         setCurrentPage(1);
     }, [rooms, selectedRoomType]);
@@ -79,7 +79,7 @@ const ExistingRooms = () => {
                                     <tr key={room.id} className='text-center'>
                                         <td>{room.id}</td>
                                         <td>{room.roomType}</td>
-                                        <td>${room.price} per night</td>
+                                        <td>${room.roomPrice} per night</td>
                                         <td>
                                             <button>View or Edit</button>
                                             <button>Delete</button>
@@ -100,9 +100,6 @@ const ExistingRooms = () => {
 };
 
 // Prop types validation for ExistingRooms component
-ExistingRooms.propTypes = {
-    data: PropTypes.array.isRequired,
-    setFilteredRooms: PropTypes.func.isRequired
-};
+
 
 export default ExistingRooms;
