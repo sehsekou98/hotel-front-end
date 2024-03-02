@@ -58,14 +58,15 @@ export async function deleteRoom(roomId){
 
 // update the room
 
-export async function updateRoom(roomId, roomDate){
-    const formData = new  FormData();
-    formData.append("roomType", roomDate.roomType)
-    formData.append("roomPrice", roomDate.roomPrice)
-    formData.append("photo", roomDate.photo)
-    const response = await api.put(`/rooms/update/${roomId}`)
-    return response
+export async function updateRoom(roomId, roomDate) {
+    const formData = new FormData();
+    formData.append("roomType", roomDate.roomType);
+    formData.append("roomPrice", roomDate.roomPrice);
+    formData.append("photo", roomDate.photo);
+    const response = await api.put(`/rooms/update/${roomId}`, formData);
+    return response;
 }
+
 
 //  get a room by id
 
