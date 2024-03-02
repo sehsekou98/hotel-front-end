@@ -55,3 +55,26 @@ export async function deleteRoom(roomId){
         throw new Error(`Failed to delete room.${error.message}`)
     }
 }
+
+// update the room
+
+export async function updateRoom(roomId, roomDate){
+    const formData = new  FormData();
+    formData.append("roomType", roomDate.roomType)
+    formData.append("roomPrice", roomDate.roomPrice)
+    formData.append("photo", roomDate.photo)
+    const response = await api.put(`/rooms/update/${roomId}`)
+    return response
+}
+
+//  get a room by id
+
+export async function getRoomById(roomId){
+    try {
+        const result = await api.get(`/rooms/room/${roomId}`)
+        return result.data
+        
+    } catch (error) {
+        throw new Error(`Error fetching room ${error.message}`)
+    }
+}
