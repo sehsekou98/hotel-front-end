@@ -1,21 +1,22 @@
 /* eslint-disable react/prop-types */
-import  { useState } from 'react';
+import { useState } from 'react';
 
-const RoomFilter = ({ data, setFilteredData }) => {
+const RoomFilter = ({ data, setFilteredRooms }) => {
     const [filter, setFilter] = useState("");
 
     const handleSelectChange = (e) => {
         const selectedRoomType = e.target.value;
         setFilter(selectedRoomType);
-        const filteredRooms = data.filtere((room) => 
+        const filteredRooms = data.filter((room) => 
             room.roomType.toLowerCase().includes(selectedRoomType.toLowerCase())
         );
-        setFilteredData(filteredRooms);
+        setFilteredRooms(filteredRooms);
     };
+    
 
     const clearFilter = () => {
         setFilter("");
-        setFilteredData(data);
+        setFilteredRooms(data);
     };
 
     const roomTypes = ["", ...new Set(data.map((room) => room.roomType))];
@@ -29,7 +30,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
                 <option value={""}>select a room type...</option>
                 {roomTypes.map((type, index) => (
                     <option key={index} value={String(type)}>
-                        {String (type)}
+                        {String(type)}
                     </option>
                 ))}
             </select>
@@ -37,7 +38,5 @@ const RoomFilter = ({ data, setFilteredData }) => {
         </div>
     );
 };
-
-
 
 export default RoomFilter;

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Col } from 'react-bootstrap';
 import RoomFilter from '../common/RoomFilter';
 import RoomPaginator from '../common/RoomPaginator';
-import PropTypes from 'prop-types'; // Import PropTypes
 import { getAllRooms } from '../utilis/ApiFunctions';
 
 const ExistingRooms = () => {
@@ -16,10 +15,10 @@ const ExistingRooms = () => {
     const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
-        fetchRooms(); // Corrected function name here
+        fetchRooms(); 
     }, []);
 
-    const fetchRooms = async () => { // Corrected function name here
+    const fetchRooms = async () => { 
         setIsLoading(true);
         try {
             const result = await getAllRooms();
@@ -30,14 +29,18 @@ const ExistingRooms = () => {
         }
     };
 
-    useEffect(() => {
+    useEffect(() => {    
         if (selectedRoomType === "") {
             setFilteredRooms(rooms);
         } else {
-            const filtered = rooms.filtere((room) => room.roomType === selectedRoomType);
+            const filtered = rooms.filter((room) => room.roomType === selectedRoomType);
+            console.log("Filtered Rooms:", filtered); 
+            setFilteredRooms(filtered);
         }
         setCurrentPage(1);
     }, [rooms, selectedRoomType]);
+    
+    
 
     const handlePaginationClick = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -90,7 +93,7 @@ const ExistingRooms = () => {
                         </table>
                         <RoomPaginator
                             currentPage={currentPage}
-                            totalPages={calculateTotalPages(filteredRooms, roomsPerPage, rooms)} // Corrected prop name here
+                            totalPages={calculateTotalPages(filteredRooms, roomsPerPage, rooms)} 
                             onPageChange={handlePaginationClick} />
                     </section>
                 </>
@@ -99,7 +102,7 @@ const ExistingRooms = () => {
     );
 };
 
-// Prop types validation for ExistingRooms component
+
 
 
 export default ExistingRooms;
