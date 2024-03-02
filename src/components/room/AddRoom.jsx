@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-import react, { useState } from 'react';
+
+import  { useState } from 'react';
 import { addRoom } from '../utilis/ApiFunctions';
 import RoomTypeSelector from '../common/RoomTypeSelector';
 
@@ -11,16 +11,16 @@ const AddRoom = () => {
   });
 
   const [imagePreview, setImagePreview] = useState('');
-  // eslint-disable-next-line no-unused-vars
+ 
   const [successMessage, setSuccessMessage] = useState('');
-  // eslint-disable-next-line no-unused-vars
+  
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleRoomInputChange = (e) => {
     const name = e.target.name;
     let value = e.target.value;
     if (name === 'roomPrice') {
-      // Parse roomPrice to integer
+      
       value = !isNaN(value) ? parseInt(value) : '';
     }
     setNewRoom({ ...newRoom, [name]: value });
