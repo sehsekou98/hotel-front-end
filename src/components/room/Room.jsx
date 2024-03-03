@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import RoomCard from './RoomCard'
 import { Col, Container, Row } from "react-bootstrap"
+import RoomPaginator from '../common/RoomPaginator'
+import RoomFilter from '../common/RoomFilter'
+import {getAllRooms} from '../utilis/ApiFunctions'
 
 const Room = () => {
     const [data, setData] = useState([])
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [roomPrePage, setRoomPrePage] = useState(5)
+    const [roomsPrePage] = useState(5)
     const [filteredData, setFilteredData] = useState([{id: ''}])
 
     useEffect(() => {
@@ -30,11 +33,16 @@ if(isLoading) {
 if(error){
     return <div className='text-danger'>Error : {error}</div>
 }
-const totalPages = Math.ceil(filteredData.length / roomPrePage)
+
+const  handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber)
+}
+
+const totalPages = Math.ceil(filteredData.length / roomsPrePage)
 
 const renderRooms = () => {
-    const startIndex = (currentPage - 1) * roomPrePage
-    const endIndex = startIndex + roomPrePage
+    const startIndex = (currentPage - 1) * roomsPrePage
+    const endIndex = startIndex + roomsPrePage
     return filteredData.slice(startIndex, endIndex)
     .map((room) => <RoomCard key={room.id} room={room} />)
       
@@ -47,7 +55,7 @@ const renderRooms = () => {
                 <RoomFilter data={data} setFilteredData={setFilteredData} />
             </Col>
             <Col md={6} className='d-flex align-items-center justify-content-end'>
-                <Pagination currentPage={currentPage} totalPages={totalPages}
+                <RoomPaginator currentPage={currentPage} totalPages={totalPages}
                 onPageChange={handlePageChange}/>
             </Col>
 
@@ -58,7 +66,7 @@ const renderRooms = () => {
       </Row>
       <Row>
         <Col md={6} className='d-flex align-items-center justify-contain-end'>
-            <RoomPignation
+            <RoomPaginator
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={handlePageChange} />
