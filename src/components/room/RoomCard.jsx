@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types'; 
+
 import { Col, Card } from 'react-bootstrap';
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import { useContext } from 'react';
 
 const RoomCard = ({ room }) => {
@@ -8,7 +10,6 @@ const RoomCard = ({ room }) => {
             <Card>
                 <Card.Body className='d-flex flex-wrap align-item-center'>
                     <div className='flex-shrrink-0 mr-3 mb-3 mb-md-0'>
-                        
                         <Link to={`/book-room/${room.id}`}>
                             <Card.Img
                                 variant='top'
@@ -34,7 +35,17 @@ const RoomCard = ({ room }) => {
                 </Card.Body>
             </Card>
         </Col>
-    )
-}
+    );
+};
 
-export default RoomCard
+// Define PropTypes for the RoomCard component
+RoomCard.propTypes = {
+    room: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        photo: PropTypes.string.isRequired,
+        roomType: PropTypes.string.isRequired,
+        roomPrice: PropTypes.number.isRequired
+    }).isRequired
+};
+
+export default RoomCard;
