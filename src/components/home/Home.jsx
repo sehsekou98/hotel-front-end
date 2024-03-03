@@ -1,10 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
+import MainHeader from '../layout/MainHeader';
+import Parallax from "../common/Parallax";
+import HotelService from "../common/HotelService";
+import RoomCarousel from "../common/RoomCarousel"
 
 const Home = () => {
   return (
-    <div>
-        <h2>Welcome To LISAM's Hotel</h2>
-    </div>
+    <section>
+       <MainHeader />
+       <section className="container">
+        <RoomCarousel />
+        <Parallax /> 
+        <RoomCarousel />  
+        <HotelService/>
+        <Parallax />
+        <RoomCarousel />
+       </section>
+    </section>
   )
 }
 
