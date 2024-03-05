@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom"
 import { useState } from 'react';
 //import Logout from '../auth/Logout'
-import Admin from "../admin/Admin";
+
 
 
 const NavBar = () => {
