@@ -1,5 +1,8 @@
 import  { useEffect, useState } from "react";
-import  getAllRoom  from "../utilis/ApiFunctions";
+import { getAllRooms } from '/src/components/utilis/ApiFunctions.js';
+
+// Now you can use getAllRooms in your code
+
 import { Link } from 'react-router-dom';
 import { Card, Carousel, Col, Container, Row } from "react-bootstrap";
 
@@ -10,7 +13,7 @@ const RoomCarousel = () => {
 
     useEffect(() => {
         setLoading(true);
-        getAllRoom()
+        getAllRooms()
             .then((data) => {
                 setRooms(data);
                 setLoading(false);

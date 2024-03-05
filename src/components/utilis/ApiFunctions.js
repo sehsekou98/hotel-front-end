@@ -39,14 +39,16 @@ export async function getRoomTypes() {
 	}
 }
 /* This function gets all rooms from the database */
+// ApiFunctions.js
 export async function getAllRooms() {
-	try {
-		const result = await api.get("/rooms/all-rooms")
-		return result.data
-	} catch (error) {
-		throw new Error("Error fetching rooms")
-	}
+    try {
+        const result = await api.get("/rooms/all-rooms");
+        return result.data;
+    } catch (error) {
+        throw new Error("Error fetching rooms");
+    }
 }
+
 
 /* This function deletes a room by the Id */
 export async function deleteRoom(roomId) {

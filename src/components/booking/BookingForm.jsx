@@ -1,9 +1,9 @@
 import  { useEffect } from "react"
 import moment from "moment"
 import { useState } from "react"
-import { Form, FormControl } from "react-bootstrap"
+import { Form, FormControl} from "react-bootstrap";
 import BookingSummary from "./BookingSummary"
-import { bookRoom, getRoomById } from "../utils/ApiFunctions"
+import { bookRoom, getRoomById } from "../utilis/ApiFunctions"
 import { useNavigate, useParams } from "react-router-dom"
 //import { useAuth } from "../auth/AuthProvider"
 
@@ -134,7 +134,6 @@ const currentUser = localStorage.getItem("userId")
 										value={booking.guestEmail}
 										placeholder="Enter your email"
 										onChange={handleInputChange}
-										disabled
 									/>
 									<Form.Control.Feedback type="invalid">
 										Please enter a valid email address.
