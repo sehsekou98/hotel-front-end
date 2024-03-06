@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
 import  { createContext, useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
-import jwt_decode from 'jwt-decode';
+//import jwt_decode from 'jwt-decode';
 
 // Now you can use jwt_decode in your code
 

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import RoomFilter from '../common/RoomFilter';
-import RoomPaginator from '../common/RoomPaginator';
-import { deleteRoom, getAllRooms } from '../utilis/ApiFunctions';
-import {FaEdit, FaEye, FaPlus, FaTrashAlt} from 'react-icons/fa'
-import {Link}  from "react-router-dom";
+import  { useEffect, useState } from "react"
+import { deleteRoom, getAllRooms } from "../utilis/ApiFunctions"
+import { Col, Row } from "react-bootstrap"
+import RoomFilter from "../common/RoomFilter"
+import RoomPaginator from "../common/RoomPaginator"
+import { FaEdit, FaEye, FaPlus, FaTrashAlt } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 const ExistingRooms = () => {
 	const [rooms, setRooms] = useState([{ id: "", roomType: "", roomPrice: "" }])
@@ -12,7 +12,7 @@ const ExistingRooms = () => {
 	const [roomsPerPage] = useState(8)
 	const [isLoading, setIsLoading] = useState(false)
 	const [filteredRooms, setFilteredRooms] = useState([{ id: "", roomType: "", roomPrice: "" }])
-	const [selectedRoomType, setSelectedRoomType] = useState("")
+	const [selectedRoomType] = useState("")
 	const [errorMessage, setErrorMessage] = useState("")
 	const [successMessage, setSuccessMessage] = useState("")
 

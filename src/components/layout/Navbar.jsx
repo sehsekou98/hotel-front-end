@@ -1,7 +1,7 @@
-/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-unused-vars */
 import  { useContext, useState } from "react"
 import { NavLink, Link } from "react-router-dom"
-//import Logout from "../auth/Logout"
+import Logout from "../auth/Logout"
 
 
 const NavBar = () => {

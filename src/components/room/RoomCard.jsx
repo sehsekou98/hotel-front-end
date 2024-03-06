@@ -1,8 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import PropTypes from 'prop-types'; 
-
 import { Col, Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import { useContext } from 'react';
+//import { useContext } from 'react';
 
 const RoomCard = ({ room }) => {
     return (
@@ -21,10 +21,10 @@ const RoomCard = ({ room }) => {
                     <div className='flex-grow-1 ml-3 px-5'>
                         <Card.Title className='hotel-color'>{room.roomType}</Card.Title>
                         <Card.Title className='room-price'>{room.roomPrice}</Card.Title>
-                        <Card.Text>An unforgettable stay is also essentially a perfect stay.
-                            You’ll find the right comfort here for the rest you need after each day of discovery.
-                            Twin beds, the comfort of air-conditioning and the wi-fi to connect you to whatever you most enjoy,
-                            accompanied by coffee or a refreshing drink.
+                        <Card.Text>For a simple break or a good night's sleep, this is the place to replenish your energy. 
+                            Twin beds ready for a well-deserved rest, with the freshness provided by the AC, 
+                            a comfort that is worth its weight in gold here.
+                             Then wake up, make yourself a coffee and head for the city, your adventure has just begun
                         </Card.Text>
                     </div>
                     <div className="flex-shrink-0 mt-3">
