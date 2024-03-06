@@ -1,7 +1,7 @@
-import { Link, NavLink } from "react-router-dom"
-import { useState } from 'react';
-//import Logout from '../auth/Logout'
-
+/* eslint-disable react/jsx-no-undef */
+import  { useContext, useState } from "react"
+import { NavLink, Link } from "react-router-dom"
+//import Logout from "../auth/Logout"
 
 
 const NavBar = () => {
@@ -18,7 +18,7 @@ const NavBar = () => {
 		<nav className="navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top">
 			<div className="container-fluid">
 				<Link to={"/"} className="navbar-brand">
-					<span className="hotel-color">Geodeh Hotel</span>
+					<span className="hotel-color">Geoden Hotel</span>
 				</Link>
 
 				<button

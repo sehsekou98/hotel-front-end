@@ -39,16 +39,14 @@ export async function getRoomTypes() {
 	}
 }
 /* This function gets all rooms from the database */
-// ApiFunctions.js
 export async function getAllRooms() {
-    try {
-        const result = await api.get("/rooms/all-rooms");
-        return result.data;
-    } catch (error) {
-        throw new Error("Error fetching rooms");
-    }
+	try {
+		const result = await api.get("/rooms/all-rooms")
+		return result.data
+	} catch (error) {
+		throw new Error("Error fetching rooms")
+	}
 }
-
 
 /* This function deletes a room by the Id */
 export async function deleteRoom(roomId) {
@@ -171,20 +169,19 @@ export async function loginUser(login) {
 	}
 }
 
-
 /*  This is function to get the user profile */
+// eslint-disable-next-line no-unused-vars
 export async function getUserProfile(userId, token) {
-    const response = await api.get(`users/profile/${userId}`, {
-        headers: {
-            ...getHeader(),
-            Authorization: `Bearer ${token}` 
-        }
-    });
-    return response.data;
+	// eslint-disable-next-line no-useless-catch
+	try {
+		const response = await api.get(`users/profile/${userId}`, {
+			headers: getHeader()
+		})
+		return response.data
+	} catch (error) {
+		throw error
+	}
 }
-
-
-
 
 /* This isthe function to delete a user */
 export async function deleteUser(userId) {
@@ -199,28 +196,29 @@ export async function deleteUser(userId) {
 }
 
 /* This is the function to get a single user */
-
+// eslint-disable-next-line no-unused-vars
 export async function getUser(userId, token) {
-    const response = await api.get(`/users/${userId}`, {
-        headers: {
-            ...getHeader(),
-            Authorization: `Bearer ${token}` 
-        }
-    });
-    return response.data;
+	// eslint-disable-next-line no-useless-catch
+	try {
+		const response = await api.get(`/users/${userId}`, {
+			headers: getHeader()
+		})
+		return response.data
+	} catch (error) {
+		throw error
+	}
 }
-
-
 
 /* This is the function to get user bookings by the user id */
-
+// eslint-disable-next-line no-unused-vars
 export async function getBookingsByUserId(userId, token) {
-    const response = await api.get(`/bookings/user/${userId}/bookings`, {
-        headers: {
-            ...getHeader(),
-            Authorization: `Bearer ${token}`
-        }
-    });
-    return response.data;
+	try {
+		const response = await api.get(`/bookings/user/${userId}/bookings`, {
+			headers: getHeader()
+		})
+		return response.data
+	} catch (error) {
+		console.error("Error fetching bookings:", error.message)
+		throw new Error("Failed to fetch bookings")
+	}
 }
-
