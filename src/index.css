@@ -23,7 +23,7 @@ body {
   left: 0;
   right: 0;
   content: '';
-  background-color:rgb(77, 151, 169) ;
+  background-color:rgb(169, 77, 123) ;
   width: 0;
   margin: 0 auto;
   height: 4px;
@@ -33,7 +33,7 @@ body {
   width: 100%;
  }
  .navbar-dark .navbar-nav .nav-link {
-  color: rgba(20, 20, 20, 0.849);
+  color: rgb(25, 24, 24);
 }
 
 .navbar-dark .navbar-brand {
@@ -54,7 +54,7 @@ body {
 
   /* Hotel custom color */
  .btn-hotel{
-  background-color: rgb(169, 77, 134);
+  background-color: rgb(169, 77, 123);
   color: #fff;
   }
   .btn-hotel:hover{

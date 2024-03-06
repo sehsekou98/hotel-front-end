@@ -1,17 +1,16 @@
+
 const MainHeader = () => {
-  return (
-    <header className="main-banner">
-     <div className="overlay"></div>
-     <div className="animated-texts overlayy-content">
-      <h1>
-        Welcome to <span className="hotel-color"> Geodeh Hotel</span>
-      </h1>
-      <h4>Indulge in an unforgettable hospitality experience at LISAM Hotel, where luxury meets comfort. 
-          Nestled in the heart of Kenitra, 
-      </h4>
-     </div>
-    </header>
-  )
+	return (
+		<header className="header-banner">
+			<div className="overlay"></div>
+			<div className="animated-texts overlay-content">
+				<h1 className="text-center">
+					<span className="hotel-color"> Geoden Hotel</span>
+				</h1>
+				<h4>Welcome to <span className="hotel-color"> Geoden Hotel</span>, where luxury meets comfort, and every guest is treated like royalty</h4>
+			</div>
+		</header>
+	)
 }
 
 export default MainHeader
