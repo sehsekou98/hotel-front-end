@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { loginUser } from "../utils/ApiFunctions"
+import { loginUser } from "../utilis/ApiFunctions"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "./AuthProvider"
 
@@ -76,7 +76,7 @@ const Login = () => {
 						Login
 					</button>
 					<span style={{ marginLeft: "10px" }}>
-						You does not have an account yet?<Link to={"/register"}> Register</Link>
+						You doesnot have an account yet.<Link to={"/register"}> Register</Link>
 					</span>
 				</div>
 			</form>

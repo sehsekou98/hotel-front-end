@@ -13,6 +13,10 @@ import Checkout from "./components/booking/Checkout"
 import BookingSuccess from "./components/booking/BookingSuccess"
 import Bookings from "./components/booking/Bookings"
 import FindBooking from "./components/booking/FindBooking"
+import Login from "./components/auth/Login"
+import Registration from "./components/auth/Registration"
+import Profile from "./components/auth/Profile"
+import Logout from "./components/auth/Logout"
 
 
 function App() {
@@ -33,6 +37,15 @@ function App() {
 						<Route path="/booking-success" element={<BookingSuccess/>} />
 						<Route path="/booking" element={<Bookings/>} />
 						<Route path="/find-booking" element={<FindBooking/>} />
+
+
+						<Route path="/login" element={<Login/>} />
+						<Route path="/register" element={<Registration/>} />
+
+
+						<Route path="/profile" element={<Profile/>} />
+						<Route path="/logout" element={<Logout/>} />
+
 					</Routes>
 				</Router>
 				<Footer />

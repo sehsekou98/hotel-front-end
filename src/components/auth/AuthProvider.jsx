@@ -1,6 +1,6 @@
 import  { createContext, useState, useContext } from "react";
 import PropTypes from "prop-types";
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 
 export const AuthContext = createContext({
   user: null,
