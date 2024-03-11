@@ -1,28 +1,23 @@
-/* eslint-disable no-undef */
-import  { createContext, useState, useContext, useEffect } from "react";
+import  { createContext, useState, useContext } from "react";
 import PropTypes from "prop-types";
-//import jwt_decode from 'jwt-decode';
-
-// Now you can use jwt_decode in your code
-
+import jwt_decode from 'jwt-decode';
 
 export const AuthContext = createContext({
   user: null,
-  handleLogin: () => {}, // Removed token parameter
-  handleLogout: () => {}
+  // eslint-disable-next-line no-unused-vars
+  handleLogin: (token) => {},
+  handleLogout: () => {},
 });
 
-export const AuthProvider = ({ children, token }) => {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const handleLogin = () => { // Removed token parameter
-    if (token) {
-      const decodedUser = jwt_decode(token);
-      localStorage.setItem("userId", decodedUser.sub);
-      localStorage.setItem("userRole", decodedUser.roles);
-      localStorage.setItem("token", token);
-      setUser(decodedUser);
-    }
+  const handleLogin = (token) => {
+    const decodedUser = jwt_decode(token);
+    localStorage.setItem("userId", decodedUser.sub);
+    localStorage.setItem("userRole", decodedUser.roles);
+    localStorage.setItem("token", token);
+    setUser(decodedUser);
   };
 
   const handleLogout = () => {
@@ -32,10 +27,6 @@ export const AuthProvider = ({ children, token }) => {
     setUser(null);
   };
 
-  useEffect(() => {
-    handleLogin(); // Removed token argument
-  }, [token]);
-
   return (
     <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>
       {children}
@@ -44,8 +35,7 @@ export const AuthProvider = ({ children, token }) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  token: PropTypes.string,
+  children: PropTypes.node.isRequired, 
 };
 
 export const useAuth = () => {

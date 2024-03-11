@@ -170,6 +170,7 @@ export async function loginUser(login) {
 }
 
 /*  This is function to get the user profile */
+
 // eslint-disable-next-line no-unused-vars
 export async function getUserProfile(userId, token) {
 	// eslint-disable-next-line no-useless-catch
