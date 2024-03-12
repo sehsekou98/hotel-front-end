@@ -39,7 +39,7 @@ const Profile = () => {
 		}
 
 		fetchUser()
-	}, [userId])
+	}, [token, userId])
 
 	useEffect(() => {
 		const fetchBookings = async () => {
@@ -53,7 +53,7 @@ const Profile = () => {
 		}
 
 		fetchBookings()
-	}, [userId])
+	}, [token, userId])
 
 	const handleDeleteAccount = async () => {
 		const confirmed = window.confirm(
