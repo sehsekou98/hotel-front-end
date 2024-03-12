@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import axios from "axios"
 
 export const api = axios.create({
@@ -170,10 +171,7 @@ export async function loginUser(login) {
 }
 
 /*  This is function to get the user profile */
-
-// eslint-disable-next-line no-unused-vars
 export async function getUserProfile(userId, token) {
-	// eslint-disable-next-line no-useless-catch
 	try {
 		const response = await api.get(`users/profile/${userId}`, {
 			headers: getHeader()
@@ -197,9 +195,7 @@ export async function deleteUser(userId) {
 }
 
 /* This is the function to get a single user */
-// eslint-disable-next-line no-unused-vars
 export async function getUser(userId, token) {
-	// eslint-disable-next-line no-useless-catch
 	try {
 		const response = await api.get(`/users/${userId}`, {
 			headers: getHeader()
@@ -211,7 +207,6 @@ export async function getUser(userId, token) {
 }
 
 /* This is the function to get user bookings by the user id */
-// eslint-disable-next-line no-unused-vars
 export async function getBookingsByUserId(userId, token) {
 	try {
 		const response = await api.get(`/bookings/user/${userId}/bookings`, {
