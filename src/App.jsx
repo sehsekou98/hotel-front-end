@@ -17,16 +17,16 @@ import Login from "./components/auth/Login"
 import Registration from "./components/auth/Registration"
 import Profile from "./components/auth/Profile"
 import Logout from "./components/auth/Logout"
+import { AuthProvider } from "./components/auth/AuthProvider"
 
 
 function App() {
 	return (
-		
+		<AuthProvider>
 			<main>
 				<Router>
 					<NavBar />
 					<Routes>
-						
 						<Route path="/" element={<Home />} />
 						<Route path="/edit-room/:roomId" element={<EditRoom />} />
 						<Route path="/existing-rooms" element={<ExistingRooms />} />
@@ -50,6 +50,7 @@ function App() {
 				</Router>
 				<Footer />
 			</main>
+			</AuthProvider>
 		
 	)
 }
